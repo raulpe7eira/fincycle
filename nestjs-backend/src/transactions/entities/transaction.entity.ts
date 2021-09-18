@@ -4,7 +4,10 @@ import {
   Table,
   PrimaryKey,
   DataType,
+  ForeignKey,
+  BelongsTo,
 } from 'sequelize-typescript';
+import { Account } from './../../accounts/entities/account.entity';
 
 export enum TransactionCategory {
   CATEGORY1 = 'category1',
@@ -48,4 +51,15 @@ export class Transaction extends Model {
 
   @Column({ allowNull: false })
   type: TransactionType;
+
+  @ForeignKey(() => Account)
+  @Column({
+    type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
+    allowNull: false,
+  })
+  account_id: string;
+
+  @BelongsTo(() => Account)
+  account: Account;
 }
