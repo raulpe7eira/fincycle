@@ -1,5 +1,4 @@
 @accessToken = {{login.response.body.$.access_token}}
-@accountId = {{createAccount.response.body.$.id}}
 @backendHost = http://localhost:3000
 @loginHost = http://localhost:8080
 
@@ -62,8 +61,7 @@ Content-Type: application/json
   "description": "Descrição",
   "category": "category1",
   "amount": 30,
-  "type": "debit",
-  "account_id": "{{accountId}}"
+  "type": "debit"
 }
 
 ###
