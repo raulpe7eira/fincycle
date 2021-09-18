@@ -10,6 +10,8 @@ import { Account } from './accounts/entities/account.entity';
 import { CommonModule } from './common/common.module';
 import { AuthModule } from './auth/auth.module';
 import { TenantModule } from './tenant/tenant.module';
+import { ReportsModule } from './reports/reports.module';
+import { Report } from './reports/entities/report.entity';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { TenantModule } from './tenant/tenant.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      models: [Account, Transaction],
+      models: [Account, Report, Transaction],
       autoLoadModels: true,
       synchronize: true,
       sync: {
@@ -34,6 +36,7 @@ import { TenantModule } from './tenant/tenant.module';
     CommonModule,
     AuthModule,
     TenantModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -68,3 +68,19 @@ Content-Type: application/json
 # @name retrieveTransactions
 GET {{backendHost}}/transactions
 Authorization: Bearer {{accessToken}}
+
+###
+# @name generateReport
+GET {{backendHost}}/reports
+Authorization: Bearer {{accessToken}}
+
+###
+# @name generateReport-with-period
+POST {{backendHost}}/reports
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "start_date": "2021-01-01",
+  "end_date": "2021-01-02"
+}

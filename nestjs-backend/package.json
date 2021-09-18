@@ -30,6 +30,7 @@
     "@nestjs/sequelize": "^8.0.0",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "date-fns": "^2.24.0",
     "mysql2": "^2.3.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
