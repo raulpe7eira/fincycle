@@ -1,4 +1,29 @@
-POST http://localhost:3000/accounts
+@accessToken = {{login.response.body.$.access_token}}
+@accountId = {{createAccount.response.body.$.id}}
+@backendHost = http://localhost:3000
+@loginHost = http://localhost:8080
+
+###
+# @name login
+POST {{loginHost}}/auth/realms/fincycle/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=nest
+&client_secret=96117742-b488-4860-a84a-63d53df33607
+&grant_type=password
+&username=user1@user.com
+&password=123456
+
+###
+# @name failCreateAccount
+POST {{backendHost}}/accounts
+Content-Type: application/json
+
+{}
+
+###
+# @name createAccount
+POST {{backendHost}}/accounts
 Content-Type: application/json
 
 {
@@ -7,16 +32,28 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/accounts
+# @name retrieveAccounts
+GET {{backendHost}}/accounts
+
+###
+# @name unauthorizeCreateTransaction
+POST {{backendHost}}/transactions
 Content-Type: application/json
 
 {}
 
 ###
-GET http://localhost:3000/accounts
+# @name failCreateTransaction
+POST {{backendHost}}/transactions
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{}
 
 ###
-POST http://localhost:3000/transactions
+# @name createTransaction
+POST {{backendHost}}/transactions
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
@@ -26,14 +63,10 @@ Content-Type: application/json
   "category": "category1",
   "amount": 30,
   "type": "debit",
-  "account_id": "f6a3211f-1c05-4cee-bb37-8a5b5749a5d1"
+  "account_id": "{{accountId}}"
 }
 
 ###
-POST http://localhost:3000/transactions
-Content-Type: application/json
-
-{}
-
-###
-GET http://localhost:3000/transactions
+# @name retrieveTransactions
+GET {{backendHost}}/transactions
+Authorization: Bearer {{accessToken}}
