@@ -14,9 +14,25 @@ Content-Type: application/json
 POST http://localhost:3000/transactions
 Content-Type: application/json
 
-{
-  
-}
+{}
 
 ###
 GET http://localhost:3000/transactions
+
+###
+POST http://localhost:3000/accounts
+Content-Type: application/json
+
+{
+    "name": "Account 1",
+    "subdomain": "tenant1"
+}
+
+###
+POST http://localhost:3000/accounts
+Content-Type: application/json
+
+{}
+
+###
+GET http://localhost:3000/accounts
