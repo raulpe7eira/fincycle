@@ -1,2 +1,2 @@
 # DOCKER - Volumes
-.docker/keycloak
+.docker/keycloakdata/*
