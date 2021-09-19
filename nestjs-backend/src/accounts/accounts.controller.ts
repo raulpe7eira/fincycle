@@ -25,6 +25,6 @@ export class AccountsController {
 
   @Get(':id')
   findOne(@Param('id', new ParseUUIDPipe()) id: string) {
-    return this.accountsService.findOne(+id);
+    return this.accountsService.findOne(id);
   }
 }

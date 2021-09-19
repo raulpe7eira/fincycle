@@ -15,7 +15,7 @@ export class AccountsService {
     return this.accountModel.findAll();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.accountModel.findByPk(id, {
       rejectOnEmpty: true,
     });
