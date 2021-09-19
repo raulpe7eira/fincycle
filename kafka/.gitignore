@@ -1,0 +1,3 @@
+# DOCKER - Volumes
+.docker/esdata/*
+.docker/kcdata/*
